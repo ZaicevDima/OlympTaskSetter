@@ -30,4 +30,12 @@ public class Students {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Students() {
+
+    }
+    public Students(String name, int mark) {
+        this.name = name;
+        this.mark = mark;
+    }
 }
