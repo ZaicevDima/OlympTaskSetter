@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>Список учеников:</div>
+    <select id="studentList" class="form-control">
+        <option value="0">select option</option>
+        <option th:each="option : ${options}" th:value="${option}" th:text="${option}"></option>
+    </select>
+    <br>
+    <select id="taskList" class="form-control">
+        <option value="0">select option</option>
+        <option th:each="option : ${tasks}" th:value="${option}" th:text="${option}"></option>
+    </select>
+    <select id="markList" class="form-control">
+        <option value="0">select option</option>
+        <option th:each="option : ${marks}" th:value="${option}" th:text="${option}"></option>
+    </select>
+    <form action="/temp" method="post">
+        <button type="submit" class="btn btn-success">Отправить</button>
+    </form>
+</body>
+</html>

@@ -1,7 +1,7 @@
 package com.zaytsev.d.olymp_task_setter.controllers;
 
 import com.zaytsev.d.olymp_task_setter.models.Students;
-import com.zaytsev.d.olymp_task_setter.repo.StudentsRepository;
+//import com.zaytsev.d.olymp_task_setter.repo.StudentsRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
-    Logger logger = LoggerFactory.getLogger(MainController.class);
+    /*Logger logger = LoggerFactory.getLogger(MainController.class);
     @Autowired
     private StudentsRepository studentsRepository;
 
@@ -36,5 +36,5 @@ public class MainController {
         Students students = new Students(username, Integer.parseInt(usermark));
         studentsRepository.save(students);
         return "redirect:/test";
-    }
+    }*/
 }

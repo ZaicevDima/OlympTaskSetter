@@ -1,9 +1,8 @@
 package com.zaytsev.d.olymp_task_setter.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Students {
@@ -12,15 +11,46 @@ public class Students {
     private Long id;
 
     private String name;
-    private int mark;
+    private String surname;
+
+    private String patronymic;
+
+    private String classNumber;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Grades> gradesList;
 
 
-    public int getMark() {
-        return mark;
+    public Students() {
+
     }
 
-    public void setMark(int mark) {
-        this.mark = mark;
+
+    public Students(String name, String surname, String patronymic, String classNumber) {
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.classNumber = classNumber;
+    }
+
+
+    public Students(String name, String surname, String classNumber) {
+        this.name = name;
+        this.surname = surname;
+        this.classNumber = classNumber;
+    }
+    public Students(String name, String surname, String classNumber, List<Grades> gradesList) {
+        this.name = name;
+        this.surname = surname;
+        this.classNumber = classNumber;
+        this.gradesList = gradesList;
+    }
+    public Students(String name, String surname, String patronymic, String classNumber, List<Grades> gradesList) {
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.classNumber = classNumber;
+        this.gradesList = gradesList;
     }
 
     public String getName() {
@@ -31,11 +61,27 @@ public class Students {
         this.name = name;
     }
 
-    public Students() {
-
+    public String getSurname() {
+        return surname;
     }
-    public Students(String name, int mark) {
-        this.name = name;
-        this.mark = mark;
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getPatronymic() {
+        return patronymic;
+    }
+
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
+    }
+
+    public String getClassNumber() {
+        return classNumber;
+    }
+
+    public void setClassNumber(String classNumber) {
+        this.classNumber = classNumber;
     }
 }
