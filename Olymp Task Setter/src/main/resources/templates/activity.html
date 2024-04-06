@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>Список тем:</div>
+    <form action="/activity" method="post">
+        <input type="text" name="activities" list="activitiesList" th:value="${activities}">
+        <datalist id="activitiesList">
+            <option th:each="option : ${activityOption}" th:value="${option}" th:text="${option}"></option>
+        </datalist>
+
+
+        <button type="submit" class="btn btn-success">Отправить</button>
+    </form>
+</body>
+</html>

@@ -4,75 +4,40 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 public class Grades {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String theme;
+    @Getter
+    @Setter
     private String taskName;
+    @Getter
+    @Setter
+    private Long activityId;
 
+    @Getter
+    @Setter
     private String grade;
+    @Getter
+    @Setter
     private Long studentId;
+    @Getter
+    @Setter
     private Long teacherId;
 
     public Grades() {
 
     }
-    public Grades(String theme, String taskName, String grade, Long studentId, Long teacherId) {
-        this.theme = theme;
+
+    public Grades(String taskName, Long activityId, String grade, Long studentId, Long teacherId) {
         this.taskName = taskName;
+        this.activityId = activityId;
         this.grade = grade;
         this.studentId = studentId;
-        this.teacherId = teacherId;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getTheme() {
-        return theme;
-    }
-
-    public void setTheme(String theme) {
-        this.theme = theme;
-    }
-
-    public String getTaskName() {
-        return taskName;
-    }
-
-    public void setTaskName(String taskName) {
-        this.taskName = taskName;
-    }
-
-    public String getGrade() {
-        return grade;
-    }
-
-    public void setGrade(String grade) {
-        this.grade = grade;
-    }
-
-    public Long getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(Long studentId) {
-        this.studentId = studentId;
-    }
-
-    public Long getTeacherId() {
-        return teacherId;
-    }
-
-    public void setTeacherId(Long teacherId) {
         this.teacherId = teacherId;
     }
 }
