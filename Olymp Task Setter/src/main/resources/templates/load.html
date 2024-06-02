@@ -27,8 +27,20 @@
         <option value="0">select option</option>
         <option th:each="option : ${marks}" th:value="${option}" th:text="${option}"></option>
     </select>
-    <form action="/temp" method="post">
+    <!--<form action="/temp" method="post">
         <button type="submit" class="btn btn-success">Отправить</button>
+    </form>
+    <br>
+    <form action="/grades" method="GET">
+        <button type="submit" class="btn btn-success">Изменить настройки задач</button>
+    </form>--->
+    <br>
+    <form action="/activity/settings" method="GET">
+        <button type="submit" class="btn btn-success">Настройки активности</button>
+    </form>
+    <br>
+    <form action="/activity" method="GET">
+        <button type="submit" class="btn btn-success">Вернуться в меню активности</button>
     </form>
 </body>
 </html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--<select multiple>
+        <option th:each="option : ${grades}" th:value="${option}" th:text="${option}"></option>
+    </select>-->
+    <form action="/grades" method="post">
+        <input type="grades" name="grades" list="gradesList">
+        <datalist id="gradesList">
+            <option th:each="option : ${gradesOption}" th:value="${option}" th:text="${option}"></option>
+        </datalist>
+        <br>
+        <button type="submit" class="btn btn-success">Добавить задачу</button>
+    </form>
+    <br>
+
+    <form action="/grades" method="post">
+        <button type="submit" class="btn btn-success">Вернуться в меню задач</button>
+    </form>
+</body>
+</html>

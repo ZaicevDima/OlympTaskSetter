@@ -10,7 +10,7 @@ import lombok.Setter;
 @Entity
 public class Grades {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Getter
     @Setter

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Создание новой активности</h1>
+    <form action="/activity/create" method="post">
+        <p><input name="activityURL" required placeholder="Ссылка на таблицу"></p>
+        <p><input name="activityName" placeholder="Название активности"></p>
+        <button type="submit" class="btn btn-success">Создать новую активность</button>
+    </form>
+    <br>
+    <form action="/activity/" method="GET">
+        <button type="submit" class="btn btn-success">Отмена</button>
+    </form>
+    <br>
+</body>
+</html>
