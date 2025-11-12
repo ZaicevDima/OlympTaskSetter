@@ -14,7 +14,8 @@
 
     <modules>
         <module>liquibase-migrations</module>
-        <module>subject-schema</module>
+        <module>activity-jooq-schema</module>
+        <module>subject-jooq-schema</module>
     </modules>
 
     <properties>
@@ -22,7 +23,11 @@
         <liquibase.changeLogFile>db.changelog/db.changelog-master.xml</liquibase.changeLogFile>
         <liquibase.host>mypostgres</liquibase.host>
         <liquibase.port>5432</liquibase.port>
-        <liquibase.db>postres</liquibase.db>
+        <liquibase.db>postgres</liquibase.db>
+        <liquibase.schema>public</liquibase.schema>
+        <liquibase.user>postgres</liquibase.user>
+        <liquibase.passwoed>postgres</liquibase.passwoed>
+        <liquibase.searchPath>liquibase-migrations/src/main/resources</liquibase.searchPath>
     </properties>
 
     <dependencies>
@@ -66,5 +71,144 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>generate-jooq</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.testcontainers</groupId>
+                        <artifactId>testcontainers-jooq-codegen-maven-plugin</artifactId>
+                        <version>0.0.4</version>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.testcontainers</groupId>
+                                <artifactId>postgresql</artifactId>
+                                <version>${testcontainers.version}</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.postgresql</groupId>
+                                <artifactId>postgresql</artifactId>
+                                <version>${postgresql.version}</version>
+                            </dependency>
+                        </dependencies>
+                        <executions>
+                            <execution>
+                                <id>generate-jooq-sources-for-activity-schema</id>
+                                <goals>
+                                    <goal>generate</goal>
+                                </goals>
+                                <phase>generate-sources</phase>
+                                <configuration>
+                                    <database>
+                                        <type>POSTGRES</type>
+                                        <containerImage>postgres:16.5</containerImage>
+                                        <username>postgres</username>
+                                        <password>postgres</password>
+                                        <databaseName>olymp-task-setter</databaseName>
+                                    </database>
+                                    <liquibase>
+                                        <changeLogPath>
+                                            liquibase-migrations/src/main/resources/db.changelog/db.changelog-master.xml
+                                        </changeLogPath>
+                                    </liquibase>
+                                    <jooq>
+                                        <generator>
+                                            <database>
+                                                <inputSchema>activity</inputSchema>
+
+<!--                                                <forcedTypes>-->
+<!--                                                    <forcedType>-->
+<!--                                                        <name>INSTANT</name>-->
+<!--                                                        <includeExpression>.*\.request_date</includeExpression>-->
+<!--                                                    </forcedType>-->
+<!--                                                    <forcedType>-->
+<!--                                                        <name>INSTANT</name>-->
+<!--                                                        <includeExpression>.*\.receiving_time</includeExpression>-->
+<!--                                                    </forcedType>-->
+
+<!--                                                    <forcedType>-->
+<!--                                                        <name>INSTANT</name>-->
+<!--                                                        <includeExpression>.*\.timestamp</includeExpression>-->
+<!--                                                    </forcedType>-->
+
+<!--                                                </forcedTypes>-->
+                                            </database>
+
+                                            <generate>
+                                                <records>true</records>
+                                            </generate>
+
+                                            <target>
+                                                <packageName>org.liman.olymp_task_setter.activity_schema
+                                                </packageName>
+                                                <directory>activity-jooq-schema/src/main/java</directory>
+                                            </target>
+                                        </generator>
+                                    </jooq>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>generate-jooq-sources-for-subject-schema</id>
+                                <goals>
+                                    <goal>generate</goal>
+                                </goals>
+                                <phase>generate-sources</phase>
+                                <configuration>
+                                    <database>
+                                        <type>POSTGRES</type>
+                                        <containerImage>postgres:16.5</containerImage>
+                                        <username>postgres</username>
+                                        <password>postgres</password>
+                                        <databaseName>olymp-task-setter</databaseName>
+                                    </database>
+                                    <liquibase>
+                                        <changeLogPath>
+                                            liquibase-migrations/src/main/resources/db.changelog/db.changelog-master.xml
+                                        </changeLogPath>
+                                    </liquibase>
+                                    <jooq>
+                                        <generator>
+                                            <database>
+                                                <inputSchema>activity</inputSchema>
+
+                                                <!--                                                <forcedTypes>-->
+                                                <!--                                                    <forcedType>-->
+                                                <!--                                                        <name>INSTANT</name>-->
+                                                <!--                                                        <includeExpression>.*\.request_date</includeExpression>-->
+                                                <!--                                                    </forcedType>-->
+                                                <!--                                                    <forcedType>-->
+                                                <!--                                                        <name>INSTANT</name>-->
+                                                <!--                                                        <includeExpression>.*\.receiving_time</includeExpression>-->
+                                                <!--                                                    </forcedType>-->
+
+                                                <!--                                                    <forcedType>-->
+                                                <!--                                                        <name>INSTANT</name>-->
+                                                <!--                                                        <includeExpression>.*\.timestamp</includeExpression>-->
+                                                <!--                                                    </forcedType>-->
+
+                                                <!--                                                </forcedTypes>-->
+                                            </database>
+
+                                            <generate>
+                                                <records>true</records>
+                                            </generate>
+
+                                            <target>
+                                                <packageName>org.liman.olymp_task_setter.subject_schema
+                                                </packageName>
+                                                <directory>subject-jooq-schema/src/main/java</directory>
+                                            </target>
+                                        </generator>
+                                    </jooq>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>
