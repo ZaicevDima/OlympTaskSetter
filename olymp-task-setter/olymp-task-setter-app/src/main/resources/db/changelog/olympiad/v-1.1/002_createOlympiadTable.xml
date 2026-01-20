@@ -1,0 +1,25 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" 
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog 
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="createOlympiadTable" author="liman">
+        <createTable tableName="olympiads" schemaName="olympiad">
+            <column name="id" type="${uuid_type}">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="${text_type}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="year" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at"
+                    type="${datatype.date.timestamptz}"
+                    defaultValueComputed="${datatype.date.currentTimestamp}"/>
+            <column name="modified_at"
+                    type="${datatype.date.timestamptz}"
+                    defaultValueComputed="${datatype.date.currentTimestamp}"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
