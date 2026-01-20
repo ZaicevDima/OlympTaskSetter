@@ -2,7 +2,13 @@ spring:
   liquibase:
     enabled: true
     change-log: classpath:/db/changelog/db.changelog-master.xml
+  datasource:
+    url: jdbc:postgresql://localhost:5433/olymp-task-setter
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
   docker:
     compose:
       file: "E:/ЮМШ/Projects/OlympTaskSetter/olymp-task-setter/docker-compose.local.yml"
+      enabled: true
 
