@@ -5,21 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.liman</groupId>
-        <artifactId>olymp-task-setter</artifactId>
+        <artifactId>olympiad-task</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>olympiad-task</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>olympiad-task-repository</module>
-        <module>olympiad-task-api</module>
-        <module>olympiad-task-adapter-web</module>
-        <module>olympiad-task-core</module>
-        <module>olympiad-task-core/olympiad-task-core-internal</module>
-        <module>olympiad-task-core/olympiad-task-core-shared</module>
-        <module>olympiad-task-use-cases</module>
-    </modules>
+    <artifactId>olympiad-task-core</artifactId>
 
     <properties>
         <maven.compiler.source>25</maven.compiler.source>
