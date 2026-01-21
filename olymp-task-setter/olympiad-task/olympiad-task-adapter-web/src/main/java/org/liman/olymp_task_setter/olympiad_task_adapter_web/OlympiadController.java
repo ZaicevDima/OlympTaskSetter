@@ -7,6 +7,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.liman.olymp_task_setter.controller.AddNewOlympiad;
 import org.liman.olymp_task_setter.dto.internal.IncomingOlympiadDTO;
+import org.liman.olymp_task_setter.olympiad_task_core_internal.OlympiadView;
+import org.liman.olymp_task_setter.olympiad_task_use_cases.UpsertOlympiadUseCase;
 import org.liman.olymp_task_setter.swagger.OpenAPIExample;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +16,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/v1/olympiads")
 public class OlympiadController implements AddNewOlympiad {
+
+    private final UpsertOlympiadUseCase upsertOlympiadUseCase;
+
+    public OlympiadController(UpsertOlympiadUseCase upsertOlympiadUseCase) {
+        this.upsertOlympiadUseCase = upsertOlympiadUseCase;
+    }
 
     @Operation(
             operationId = "olympiads-controller-add-new-olympiad",
@@ -61,6 +70,14 @@ public class OlympiadController implements AddNewOlympiad {
     )
     @Override
     public ResponseEntity<UUID> execute(@RequestBody IncomingOlympiadDTO olympiadDTO) {
-        return ResponseEntity.accepted().body(UUID.randomUUID());
+        OlympiadView olympiadView = mapToOlympiadView(olympiadDTO);
+        upsertOlympiadUseCase.saveNewOlympiad(olympiadView, 5);
+
+        return ResponseEntity.accepted().body(olympiadView.id());
+    }
+
+    private OlympiadView mapToOlympiadView(IncomingOlympiadDTO incomingOlympiadDTO) {
+        UUID id = UUID.randomUUID();
+        return new OlympiadView(id, incomingOlympiadDTO.name(), 9, List.of(), incomingOlympiadDTO.year(), null, null);
     }
 }
