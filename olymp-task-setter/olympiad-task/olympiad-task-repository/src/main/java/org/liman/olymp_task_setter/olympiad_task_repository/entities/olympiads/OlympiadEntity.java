@@ -10,9 +10,16 @@ import java.util.UUID;
 @Entity
 @Table(name = "olympiads", schema = "olympiad")
 public class OlympiadEntity {
+
     @Id
     @Column(name = "id")
     private UUID id;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "year")
+    private Integer year;
 
     public UUID getId() {
         return id;
@@ -37,11 +44,5 @@ public class OlympiadEntity {
     public void setYear(Integer year) {
         this.year = year;
     }
-
-    @Column(name = "name")
-    private String name;
-
-    @Column(name = "year")
-    private Integer year;
 
 }
