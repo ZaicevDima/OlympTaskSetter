@@ -14,5 +14,5 @@ import java.util.UUID;
 public interface DeleteOlympiad {
 
     @DeleteMapping("/delete/{id}")
-    ResponseEntity<Void> execute(@PathVariable UUID id);
+    ResponseEntity<Void> delete(@PathVariable UUID id);
 }

@@ -13,5 +13,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface FetchOlympiadByNameAndYear {
 
     @GetMapping("/fetch/")
-    ResponseEntity<ResultOlympiadDTO> execute(@RequestParam String name, @RequestParam Integer year);
+    ResponseEntity<ResultOlympiadDTO> fetchByNameAndYear(@RequestParam String name, @RequestParam Integer year);
 }

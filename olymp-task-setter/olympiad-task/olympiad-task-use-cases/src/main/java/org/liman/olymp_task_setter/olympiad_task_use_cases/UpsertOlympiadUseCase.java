@@ -1,9 +1,6 @@
 package org.liman.olymp_task_setter.olympiad_task_use_cases;
 
-import org.liman.olymp_task_setter.controller.DeleteOlympiadAPI;
-import org.liman.olymp_task_setter.controller.FetchOlympiadByNameAndYearAPI;
-import org.liman.olymp_task_setter.controller.SaveOlympiadAPI;
-import org.liman.olymp_task_setter.controller.UpdateOlympiadAPI;
+import org.liman.olymp_task_setter.controller.*;
 import org.liman.olymp_task_setter.olympiad_task_core_internal.OlympiadView;
 import org.liman.olymp_task_setter.olympiad_task_repository.entities.olympiads.OlympiadEntity;
 import org.liman.olymp_task_setter.olympiad_task_repository.repositories.OlympiadRepository;
@@ -18,7 +15,8 @@ public class UpsertOlympiadUseCase implements
         SaveOlympiadAPI,
         UpdateOlympiadAPI,
         DeleteOlympiadAPI,
-        FetchOlympiadByNameAndYearAPI {
+        FetchOlympiadByNameAndYearAPI,
+        FetchOlympiadByIdAPI {
 
     private final OlympiadRepository olympiadRepository;
 
@@ -64,6 +62,14 @@ public class UpsertOlympiadUseCase implements
                     String errorMessage = "Olympiad with name: %s and year: %s not exists".formatted(name, year);
                     return new EntityNotFoundException(errorMessage);
                 });
+
+        return mapToOlympiadView(olympiadEntity);
+    }
+
+    @Override
+    public OlympiadView fetchOlympiad(UUID id) {
+        OlympiadEntity olympiadEntity = olympiadRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Olympiad with id: %s not exists".formatted(id)));
 
         return mapToOlympiadView(olympiadEntity);
     }
