@@ -17,5 +17,5 @@ import java.util.UUID;
 public interface UpdateOlympiad {
 
     @PostMapping("/update/{id}")
-    ResponseEntity<ResultOlympiadDTO> execute(@PathVariable UUID id, @RequestBody IncomingOlympiadDTO olympiadDTO);
+    ResponseEntity<ResultOlympiadDTO> update(@PathVariable UUID id, @RequestBody IncomingOlympiadDTO olympiadDTO);
 }

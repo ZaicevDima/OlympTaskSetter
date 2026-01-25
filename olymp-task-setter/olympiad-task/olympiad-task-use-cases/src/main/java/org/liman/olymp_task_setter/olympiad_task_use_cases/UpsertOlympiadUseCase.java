@@ -1,7 +1,6 @@
 package org.liman.olymp_task_setter.olympiad_task_use_cases;
 
-import org.liman.olymp_task_setter.controller.SaveOlympiadAPI;
-import org.liman.olymp_task_setter.controller.UpdateOlympiadAPI;
+import org.liman.olymp_task_setter.controller.*;
 import org.liman.olymp_task_setter.olympiad_task_core_internal.OlympiadView;
 import org.liman.olymp_task_setter.olympiad_task_repository.entities.olympiads.OlympiadEntity;
 import org.liman.olymp_task_setter.olympiad_task_repository.repositories.OlympiadRepository;
@@ -12,7 +11,12 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 @Service
-public class UpsertOlympiadUseCase implements SaveOlympiadAPI, UpdateOlympiadAPI {
+public class UpsertOlympiadUseCase implements
+        SaveOlympiadAPI,
+        UpdateOlympiadAPI,
+        DeleteOlympiadAPI,
+        FetchOlympiadByNameAndYearAPI,
+        FetchOlympiadByIdAPI {
 
     private final OlympiadRepository olympiadRepository;
 
@@ -43,6 +47,33 @@ public class UpsertOlympiadUseCase implements SaveOlympiadAPI, UpdateOlympiadAPI
         olympiadRepository.save(olympiad);
     }
 
+    @Override
+    public void deleteOlympiad(UUID id) {
+        olympiadRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Olympiad with id: %s not exists".formatted(id)));
+
+        olympiadRepository.deleteById(id);
+    }
+
+    @Override
+    public OlympiadView fetchOlympiad(String name, int year) {
+        OlympiadEntity olympiadEntity = olympiadRepository.findByNameAndYear(name, year)
+                .orElseThrow(() -> {
+                    String errorMessage = "Olympiad with name: %s and year: %s not exists".formatted(name, year);
+                    return new EntityNotFoundException(errorMessage);
+                });
+
+        return mapToOlympiadView(olympiadEntity);
+    }
+
+    @Override
+    public OlympiadView fetchOlympiad(UUID id) {
+        OlympiadEntity olympiadEntity = olympiadRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Olympiad with id: %s not exists".formatted(id)));
+
+        return mapToOlympiadView(olympiadEntity);
+    }
+
     private OlympiadEntity mapToOlympiadEntity(OlympiadView olympiadView) {
         OlympiadEntity olympiad = new OlympiadEntity();
         olympiad.setId(olympiadView.id());
@@ -50,5 +81,13 @@ public class UpsertOlympiadUseCase implements SaveOlympiadAPI, UpdateOlympiadAPI
         olympiad.setYear(olympiadView.year());
 
         return olympiad;
+    }
+
+    private OlympiadView mapToOlympiadView(OlympiadEntity olympiad) {
+        return new OlympiadView(
+                olympiad.getId(),
+                olympiad.getName(),
+                olympiad.getYear()
+        );
     }
 }
