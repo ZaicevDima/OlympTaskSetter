@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface OlympiadRepository extends JpaRepository<OlympiadEntity, Void> {
-    Optional<OlympiadEntity> findById(UUID id);
-    boolean existsById(UUID id);
+public interface OlympiadRepository extends JpaRepository<OlympiadEntity, UUID> {
+
+    Optional<OlympiadEntity> findByNameAndYear(String name, Integer year);
 }
