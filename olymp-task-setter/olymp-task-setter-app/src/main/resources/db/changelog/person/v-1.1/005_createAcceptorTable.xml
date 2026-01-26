@@ -1,0 +1,29 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog 
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="createAcceptorTable" author="liman">
+        <sql>
+            CREATE TABLE person.acceptors() INHERITS (person.base_persons);
+        </sql>
+
+        <addPrimaryKey tableName="acceptors" schemaName="person" columnNames="id"/>
+
+        <addColumn tableName="acceptors" schemaName="person">
+            <column name="admin_id" type="${uuid_type}">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+
+        <addForeignKeyConstraint
+                baseTableName="acceptors"
+                baseTableSchemaName="person"
+                baseColumnNames="admin_id"
+                referencedTableName="admins"
+                referencedTableSchemaName="person"
+                referencedColumnNames="id"
+                constraintName="fk__acceptor_id__admin_id"/>
+    </changeSet>
+
+</databaseChangeLog>
