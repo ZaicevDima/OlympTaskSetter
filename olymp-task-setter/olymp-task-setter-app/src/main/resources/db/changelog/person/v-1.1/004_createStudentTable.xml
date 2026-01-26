@@ -1,0 +1,22 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog 
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="createStudentTable" author="liman">
+
+        <sql>
+            CREATE TABLE person.students() INHERITS (person.base_persons);
+        </sql>
+
+        <addPrimaryKey tableName="students" schemaName="person" columnNames="id"/>
+        <addColumn tableName="students" schemaName="person">
+            <column name="school" type="${text_type}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="class_number" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

@@ -3,7 +3,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog 
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="addInternalInformationInTaskTable.xml" author="liman">
+    <changeSet id="addInternalInformationInTaskTable" author="liman">
         <addColumn tableName="tasks" schemaName="olympiad">
             <column name="created_at"
                     type="${datatype.date.timestamptz}"
