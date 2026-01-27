@@ -5,7 +5,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import org.liman.olymp_task_setter.controller.*;
+import org.liman.olymp_task_setter.controller.olympiad.*;
 import org.liman.olymp_task_setter.dto.internal.IncomingOlympiadDTO;
 import org.liman.olymp_task_setter.dto.result.ResultOlympiadDTO;
 import org.liman.olymp_task_setter.olympiad_task_core_internal.OlympiadView;
@@ -47,7 +47,7 @@ public class OlympiadController implements
                                             @ExampleObject(
                                                     name = "1. Валидный запрос на добавление олимпиады",
                                                     description = "Пример добавления олимпиады с валидными данными",
-                                                    value = OpenAPIExample.SAVE_OLYMPIAD
+                                                    value = OpenAPIExample.REGISTRATION_OLYMPIAD
                                             )
                                     }
                             )
@@ -94,7 +94,7 @@ public class OlympiadController implements
                                             @ExampleObject(
                                                     name = "1. Валидный запрос на обновление олимпиады",
                                                     description = "Пример обновления олимпиады с валидными данными",
-                                                    value = OpenAPIExample.SAVE_OLYMPIAD
+                                                    value = OpenAPIExample.REGISTRATION_OLYMPIAD
                                             )
                                     }
                             )
