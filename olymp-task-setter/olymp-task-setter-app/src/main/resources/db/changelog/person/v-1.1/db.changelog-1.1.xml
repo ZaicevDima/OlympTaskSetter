@@ -9,4 +9,5 @@
     <include file="004_createStudentTable.xml" relativeToChangelogFile="true"/>
     <include file="005_createAcceptorTable.xml" relativeToChangelogFile="true"/>
     <include file="006_createRoleTable.xml" relativeToChangelogFile="true"/>
+    <include file="007_deleteAdminIdFromAcceptorsTable.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>
