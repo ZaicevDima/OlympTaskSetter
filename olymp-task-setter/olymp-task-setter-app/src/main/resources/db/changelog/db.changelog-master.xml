@@ -9,5 +9,6 @@
     <property name="datatype.date.currentTimestamp" value="CURRENT_TIMESTAMP" dbms="postgresql"/>
 
     <include file="olympiad/olympiad-changelog-master.xml" relativeToChangelogFile="true"/>
-    <include file="person/participant-changelog-master.xml" relativeToChangelogFile="true"/>
+    <include file="person/person-changelog-master.xml" relativeToChangelogFile="true"/>
+    <include file="task/task-changelog-master.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

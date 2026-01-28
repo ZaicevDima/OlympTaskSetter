@@ -1,0 +1,32 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog 
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="createTaskMetainformationTable" author="liman">
+        <createTable tableName="tasks_metainformation" schemaName="task">
+            <column name="id" type="${uuid_type}">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="olympiad_id" type="${uuid_type}">
+                <constraints referencedTableName="olympiads"
+                             referencedTableSchemaName="olympiad"
+                             referencedColumnNames="id"
+                             foreignKeyName="fk__task_id__olympiad_id"
+                             nullable="false"/>
+            </column>
+            <column name="number" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="class_number" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addUniqueConstraint
+                schemaName="task"
+                tableName="tasks_metainformation"
+                columnNames="number, class_number, olympiad_id"
+                constraintName="uq_tasks_number_class_olympiad"/>
+    </changeSet>
+</databaseChangeLog>
