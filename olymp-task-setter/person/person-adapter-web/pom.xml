@@ -5,11 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.liman</groupId>
-        <artifactId>olympiad-person</artifactId>
+        <artifactId>person</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>olympiad-person-api</artifactId>
+    <groupId>org.liman</groupId>
+    <artifactId>person-adapter-web</artifactId>
 
     <properties>
         <maven.compiler.source>25</maven.compiler.source>
@@ -19,13 +20,19 @@
     <dependencies>
         <dependency>
             <groupId>org.liman</groupId>
-            <artifactId>olympiad-person-repository</artifactId>
+            <artifactId>olymp-task-setter-api</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.liman</groupId>
-            <artifactId>olympiad-person-core-shared</artifactId>
+            <artifactId>person-core-shared</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.liman</groupId>
+            <artifactId>person-use-cases</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

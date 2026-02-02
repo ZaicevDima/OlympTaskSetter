@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.liman</groupId>
-        <artifactId>olympiad-person-core</artifactId>
+        <artifactId>person-core</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>olympiad-person-core-shared</artifactId>
+    <artifactId>person-core-shared</artifactId>
 
 </project>

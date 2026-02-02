@@ -5,15 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.liman</groupId>
-        <artifactId>olympiad-person</artifactId>
+        <artifactId>person</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>olympiad-person-core</artifactId>
+    <artifactId>person-core</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>olympiad-person-core-shared</module>
-        <module>olympiad-person-core-internal</module>
+        <module>person-core-shared</module>
+        <module>person-core-internal</module>
     </modules>
 
     <properties>

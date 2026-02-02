@@ -30,20 +30,14 @@
         </dependency>
 
         <dependency>
-            <groupId>olympiad-person-adapter-web</groupId>
-            <artifactId>olympiad-person-adapter-web</artifactId>
+            <groupId>org.liman</groupId>
+            <artifactId>person-adapter-web</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>org.liman</groupId>
             <artifactId>olymp-task-setter-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.liman</groupId>
-            <artifactId>olympiad-person-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 

@@ -20,7 +20,7 @@
         <module>olymp-task-setter-app</module>
         <module>olympiad</module>
         <module>olymp-task-setter-api</module>
-        <module>olympiad-person</module>
+        <module>person</module>
     </modules>
 
     <properties>

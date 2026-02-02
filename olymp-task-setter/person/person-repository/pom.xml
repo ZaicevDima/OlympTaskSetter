@@ -7,17 +7,10 @@
         <groupId>org.liman</groupId>
         <artifactId>olymp-task-setter</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>olympiad-person</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>olympiad-person-api</module>
-        <module>olympiad-person-repository</module>
-        <module>olympiad-person-adapter-web</module>
-        <module>olympiad-person-core</module>
-        <module>olympiad-person-use-cases</module>
-    </modules>
+    <artifactId>person-repository</artifactId>
 
     <properties>
         <maven.compiler.source>25</maven.compiler.source>
