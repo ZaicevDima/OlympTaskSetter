@@ -1,10 +1,14 @@
 package org.liman.olymp_task_setter.olympiad_person_repository.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.UUID;
 
 @MappedSuperclass
+@Getter
+@Setter
 public abstract class BasePerson {
 
     @Id
@@ -19,36 +23,4 @@ public abstract class BasePerson {
 
     @Column(name = "patronymic")
     private String patronymic;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getPatronymic() {
-        return patronymic;
-    }
-
-    public void setPatronymic(String patronymic) {
-        this.patronymic = patronymic;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
 }
