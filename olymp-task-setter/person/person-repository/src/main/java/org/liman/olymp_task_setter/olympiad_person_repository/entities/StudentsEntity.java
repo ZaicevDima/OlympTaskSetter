@@ -1,9 +1,13 @@
 package org.liman.olymp_task_setter.olympiad_person_repository.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "students", schema = "person")
+@Getter
+@Setter
 public class StudentsEntity extends BasePerson {
 
     @Column(name = "school")
@@ -11,21 +15,5 @@ public class StudentsEntity extends BasePerson {
 
     @Column(name = "class_number")
     private Integer classNumber;
-
-    public Integer getClassNumber() {
-        return classNumber;
-    }
-
-    public void setClassNumber(Integer classNumber) {
-        this.classNumber = classNumber;
-    }
-
-    public String getSchool() {
-        return school;
-    }
-
-    public void setSchool(String school) {
-        this.school = school;
-    }
 
 }
