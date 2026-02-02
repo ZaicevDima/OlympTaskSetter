@@ -18,7 +18,7 @@
     <url>http://maven.apache.org</url>
     <modules>
         <module>olymp-task-setter-app</module>
-        <module>olympiad-task</module>
+        <module>olympiad</module>
         <module>olymp-task-setter-api</module>
         <module>olympiad-person</module>
     </modules>
