@@ -21,6 +21,7 @@
         <module>olympiad</module>
         <module>olymp-task-setter-api</module>
         <module>person</module>
+        <module>task</module>
     </modules>
 
     <properties>
