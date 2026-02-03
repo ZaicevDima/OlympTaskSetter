@@ -1,4 +1,4 @@
-package org.liman.olymp_task_setter.olympiad_repository.entities.olympiads;
+package org.liman.olymp_task_setter.olympiad_repository.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

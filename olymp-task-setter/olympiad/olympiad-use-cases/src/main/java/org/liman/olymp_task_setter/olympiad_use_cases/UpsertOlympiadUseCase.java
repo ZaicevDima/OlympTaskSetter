@@ -1,9 +1,8 @@
 package org.liman.olymp_task_setter.olympiad_use_cases;
 
 import org.liman.olymp_task_setter.olympiad_api.*;
-import org.liman.olymp_task_setter.olympiad_api.*;
 import org.liman.olymp_task_setter.olympiad_core_shared.OlympiadView;
-import org.liman.olymp_task_setter.olympiad_repository.entities.olympiads.OlympiadEntity;
+import org.liman.olymp_task_setter.olympiad_repository.entities.OlympiadEntity;
 import org.liman.olymp_task_setter.olympiad_repository.repositories.OlympiadRepository;
 import org.liman.olymp_task_setter.olympiad_use_cases.exceptions.EntityAlreadyExistsException;
 import org.liman.olymp_task_setter.olympiad_use_cases.exceptions.EntityNotFoundException;
