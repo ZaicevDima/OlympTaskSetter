@@ -1,0 +1,14 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog 
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="addCreatedAtColumnInTaskTables" author="liman">
+        <addColumn tableName="tasks" schemaName="task">
+            <column name="created_at" type="${datatype.date.timestamptz}" defaultValueComputed="${datatype.date.currentTimestamp}"/>
+        </addColumn>
+        <addColumn tableName="tasks_metadata" schemaName="task">
+            <column name="created_at" type="${datatype.date.timestamptz}" defaultValueComputed="${datatype.date.currentTimestamp}"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

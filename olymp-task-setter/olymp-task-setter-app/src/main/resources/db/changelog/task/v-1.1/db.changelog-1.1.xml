@@ -6,4 +6,6 @@
     <include file="001_addTagVersion-1.1.xml" relativeToChangelogFile="true"/>
     <include file="002_createTaskMetainformationTable.xml" relativeToChangelogFile="true"/>
     <include file="003_createTasksTable.xml" relativeToChangelogFile="true"/>
+    <include file="004_renameTaskMetainformationTable.xml" relativeToChangelogFile="true"/>
+    <include file="005_addCreatedAtColumnInTaskTables.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>
