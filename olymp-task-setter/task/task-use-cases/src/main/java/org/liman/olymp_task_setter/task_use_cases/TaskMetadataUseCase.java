@@ -2,21 +2,24 @@ package org.liman.olymp_task_setter.task_use_cases;
 
 import org.liman.olymp_task_setter.task_api.model.ResultTaskMetadataModel;
 import org.liman.olymp_task_setter.task_api.model.TaskMetadataModel;
-import org.liman.olymp_task_setter.task_api.task_metadata.AddTaskMetadataAPI;
-import org.liman.olymp_task_setter.task_api.task_metadata.DeleteTaskMetadataAPI;
-import org.liman.olymp_task_setter.task_api.task_metadata.FetchTaskMetadataByIdAPI;
-import org.liman.olymp_task_setter.task_api.task_metadata.UpdateTaskMetadataAPI;
+import org.liman.olymp_task_setter.task_api.task_metadata.*;
 import org.liman.olymp_task_setter.task_repository.entities.TaskMetadataEntity;
 import org.liman.olymp_task_setter.task_repository.repositories.TaskMetadataRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 @Service
 public class TaskMetadataUseCase implements
-        AddTaskMetadataAPI, DeleteTaskMetadataAPI, FetchTaskMetadataByIdAPI, UpdateTaskMetadataAPI {
+        AddTaskMetadataAPI,
+        AddAllTasksMetadataAPI,
+        DeleteTaskMetadataAPI,
+        FetchTaskMetadataByIdAPI,
+        UpdateTaskMetadataAPI {
 
     private final TaskMetadataRepository taskMetadataRepository;
 
@@ -32,6 +35,15 @@ public class TaskMetadataUseCase implements
         taskMetadataRepository.save(taskMetadataEntity);
 
         return taskMetadataEntity.getId();
+    }
+
+    @Override
+    public void addAll(Collection<TaskMetadataModel> tasksMetadata) {
+        // TODO добавить проверку на существование в рамках задачи #55
+        List<TaskMetadataEntity> taskMetadataEntities = tasksMetadata.stream()
+                .map(this::mapToEntity)
+                .toList();
+        taskMetadataRepository.saveAll(taskMetadataEntities);
     }
 
     @Override
